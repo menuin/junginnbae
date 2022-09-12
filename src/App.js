@@ -11,6 +11,14 @@ import Repertoire from "./pages/Repertoire";
 import Videos from "./pages/Videos";
 
 const Nav = styled.div``;
+const HeadContainer = styled.div`
+  position: fixed;
+  background-color: #a49c73;
+  opacity: 0;
+  height: 60px;
+  width: 100%;
+  z-index: 289;
+`;
 const Content = styled.div`
   background-color: #252525;
   color: white;
@@ -21,6 +29,7 @@ const Content = styled.div`
 function App() {
   return (
     <Nav>
+      <HeadContainer></HeadContainer>
       <Content>
         <Router>
           <Navigation />

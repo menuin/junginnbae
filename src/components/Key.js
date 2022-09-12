@@ -10,7 +10,7 @@ const keyAppear = keyframes`
 `;
 const KeyContainer = styled.div`
   position: relative;
-  background-color: white;
+  background-color: #e7e7e7;
   border-radius: 3px 3px 0px 0px;
   border: 1px solid gray;
   height: 100%;

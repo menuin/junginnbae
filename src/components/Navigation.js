@@ -33,6 +33,8 @@ const NavContainer = styled.div`
   /* opacity: ${(props) => (props.isAccessible ? 1 : 0)}; */
 `;
 const NavTitle = styled.div`
+  font-family: "Raleway", sans-serif;
+
   color: #d8d8d8;
   position: fixed;
   bottom: 70px;
