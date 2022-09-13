@@ -20,7 +20,7 @@ const HeadContainer = styled.div`
   z-index: 289;
 `;
 const Content = styled.div`
-  background-color: #252525;
+  background-color: #212121;
   color: white;
   position: absolute;
   height: 100%;

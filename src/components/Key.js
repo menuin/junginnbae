@@ -8,6 +8,7 @@ const keyAppear = keyframes`
         top:0px;
     }
 `;
+
 const KeyContainer = styled.div`
   position: relative;
   background-color: #e7e7e7;
@@ -16,8 +17,6 @@ const KeyContainer = styled.div`
   height: 100%;
   width: 100%;
   margin: 0;
-  // loading이 완료되면 remove animation <- 지금은 keydown 할때마다 keyappear 애니메이션이 같이 실행됨
-  /* animation: ${keyAppear} 1s forwards; */
 `;
 
 function Key(id) {

@@ -22,6 +22,14 @@ const keyDown = keyframes`
         padding-top:20px;
     }
 `;
+const appear = keyframes`
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+`;
 const NavContainer = styled.div`
   position: fixed;
   bottom: 0;
@@ -30,6 +38,12 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: center;
   background: transparent;
+  /* opacity: 0; */
+  /* &:hover {
+    animation: ${appear} 1s forwards;
+    /* animation-delay: 2s; */
+  } */
+
   /* opacity: ${(props) => (props.isAccessible ? 1 : 0)}; */
 `;
 const NavTitle = styled.div`
@@ -47,13 +61,23 @@ const NavKeyContainer = styled.div`
   bottom: 0;
 `;
 
+const keyAppear = keyframes`
+  0% {
+    padding-top:30px;
+  }
+  100% {
+    padding-top:0px;
+  }
+`;
 const KeyWrap = styled.div`
   width: 80px;
   display: flex;
   justify-content: center;
   margin: 0px 2px;
-
   padding: 0px;
+  padding-top: 30px;
+  animation: ${keyAppear} 1s forwards;
+  animation-delay: ${(props) => Math.abs(props.index - 3) / 6}s;
   & :hover {
     animation: ${keyDown} 1s forwards;
   }
@@ -91,7 +115,12 @@ function Navigation() {
         <NavKeyContainer>
           {navList.map((nav, index) => {
             return (
-              <KeyWrap onMouseOver={showTitle} onMouseOut={hideTitle} id={nav}>
+              <KeyWrap
+                onMouseOver={showTitle}
+                onMouseOut={hideTitle}
+                id={nav}
+                index={index}
+              >
                 <NavLink to={nav === "home" ? "/" : "/" + nav}>
                   <Key id={index}></Key>
                 </NavLink>
