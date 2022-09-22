@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styled, { keyframes } from "styled-components";
+import { showElement } from "../GlobalStyle";
 
 const spreadLetter = keyframes`
   0%{
@@ -12,14 +13,6 @@ const spreadLetter = keyframes`
     margin : 0px 14px;
   }
 `;
-const showElement = keyframes`
-  0%{
-    opacity:0;
-  }
-  100%{
-    opacity:1;
-  }
-`;
 
 const HomeContentContainer = styled.div`
   display: flex;
@@ -29,19 +22,22 @@ const HomeContentContainer = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 60px;
+  margin-top: 400px;
   margin-bottom: 10px;
 `;
 
 const LetterContainer = styled.div`
   font-size: 60px;
-  font-family: "Raleway", sans-serif;
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Montserrat", sans-serif;
+  font-weight: light;
   animation: ${spreadLetter} 1.5s forwards;
 `;
 const SubTitleContainer = styled.div`
   display: flex;
   justify-content: center;
   font-family: "Raleway", sans-serif;
+  color: #7c7c7c;
   font-size: 20px;
   opacity: 0;
   animation: ${showElement} 1s forwards;
@@ -69,24 +65,11 @@ const LanSelectBtn = styled.div`
   animation: ${showElement} 1s forwards;
   animation-delay: 2.5s;
 `;
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  height: 250px;
-`;
-const HomeImg = styled.img`
-  min-width: 100%;
-  min-height: 100%;
-`;
+
 function Home() {
   const titleLetters = ["J", "U", "N", "G", "I", "N", " ", "P", "A", "E"];
   return (
     <HomeContentContainer>
-      <ImageContainer>
-        <HomeImg src="images/home_pianist.jpg" />
-      </ImageContainer>
       <TitleContainer>
         {titleLetters.map((letter, index) => {
           return <LetterContainer id={index}>{letter}</LetterContainer>;
@@ -94,7 +77,7 @@ function Home() {
       </TitleContainer>
       <SubTitleContainer>pianist</SubTitleContainer>
       {/* <HomeBtnContainer>
-        <LanSelectBtn>한국어</LanSelectBtn>
+        <LanSelectBtn>KOREAN</LanSelectBtn>
         <LanSelectBtn>ENGLISH</LanSelectBtn>
       </HomeBtnContainer> */}
     </HomeContentContainer>

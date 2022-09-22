@@ -1,18 +1,10 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+import { showElement } from "../GlobalStyle";
 import Key from "./Key";
 
-// const AccessNavDiv = styled.div`
-//   position: fixed;
-//   bottom: 0;
-//   width: 100%;
-//   height: 100px;
-//   background-color: beige;
-//   opacity: 0.5;
-//   z-index: 289;
-//   pointer-events: none;
-// `;
 const keyDown = keyframes`
     0% {
         padding-top:0px;
@@ -22,15 +14,16 @@ const keyDown = keyframes`
         padding-top:20px;
     }
 `;
-const appear = keyframes`
+const keyAppear = keyframes`
   0% {
-    opacity:0;
+    padding-top:30px;
   }
   100% {
-    opacity:1;
+    padding-top:0px;
   }
 `;
 const NavContainer = styled.div`
+  z-index: 300;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -38,13 +31,14 @@ const NavContainer = styled.div`
   display: flex;
   justify-content: center;
   background: transparent;
-  /* opacity: 0; */
-  /* &:hover {
-    animation: ${appear} 1s forwards;
-    /* animation-delay: 2s; */
-  } */
-
-  /* opacity: ${(props) => (props.isAccessible ? 1 : 0)}; */
+  ${(props) =>
+    props.crntPath !== "/" &&
+    css`
+      &:hover {
+        animation: ${showElement} 1s forwards;
+      }
+      opacity: 0;
+    `}
 `;
 const NavTitle = styled.div`
   font-family: "Raleway", sans-serif;
@@ -61,14 +55,6 @@ const NavKeyContainer = styled.div`
   bottom: 0;
 `;
 
-const keyAppear = keyframes`
-  0% {
-    padding-top:30px;
-  }
-  100% {
-    padding-top:0px;
-  }
-`;
 const KeyWrap = styled.div`
   width: 80px;
   display: flex;
@@ -89,7 +75,6 @@ const NavLink = styled(Link)`
 
 function Navigation() {
   const [title, setTitle] = useState("");
-  // const [isNavAccessible, setIsNavAccessible] = useState(false);
   const navList = [
     "home",
     "bio",
@@ -99,9 +84,7 @@ function Navigation() {
     "class",
     "contact",
   ];
-  // const changeNavAccessibility = () => {
-  //   setIsNavAccessible(!isNavAccessible);
-  // };
+  const crntPath = window.location.pathname;
   const showTitle = (event) => {
     setTitle(event.currentTarget.id);
   };
@@ -110,7 +93,7 @@ function Navigation() {
   };
   return (
     <>
-      <NavContainer>
+      <NavContainer crntPath={crntPath}>
         <NavTitle>{title.toUpperCase()}</NavTitle>
         <NavKeyContainer>
           {navList.map((nav, index) => {

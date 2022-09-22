@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import styled from "styled-components";
 import "./App.css";
+import Head from "./components/Head";
 import Navigation from "./components/Navigation";
 import Bio from "./pages/Bio";
 import Class from "./pages/Class";
@@ -14,24 +16,25 @@ const Nav = styled.div``;
 const HeadContainer = styled.div`
   position: fixed;
   background-color: #a49c73;
-  opacity: 0;
+  /* opacity: 0; */
   height: 60px;
   width: 100%;
   z-index: 289;
 `;
 const Content = styled.div`
-  background-color: #212121;
+  background-color: #181818;
   color: white;
   position: absolute;
   height: 100%;
+  overflow-y: scroll;
   width: 100%;
 `;
 function App() {
   return (
     <Nav>
-      <HeadContainer></HeadContainer>
       <Content>
         <Router>
+          <Head />
           <Navigation />
 
           <Routes>
