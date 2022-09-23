@@ -34,6 +34,7 @@ const LetterContainer = styled.div`
   /* font-family: "Quattrocento", serif; */
   /* font-family: "Montserrat", sans-serif; */
   font-weight: light;
+  color: #e7e7e7;
   animation: ${spreadLetter} 1.5s forwards;
 `;
 const SubTitleContainer = styled.div`

@@ -16,7 +16,7 @@ const BioContentContainer = styled.div`
 
 const BioImgContainer = styled.div`
   width: 1000px;
-  height: 600px;
+  height: 650px;
   overflow: hidden;
   opacity: 0;
   animation: ${showElement} 1s forwards;
@@ -25,8 +25,19 @@ const BioImgContainer = styled.div`
 const BioImg = styled.img`
   width: 100%;
 `;
+const BioDescriptionTitle = styled.div`
+  font-family: "Montserrat", sans-serif;
+  font-size: 30px;
+  margin-top: 80px;
+  opacity: 0;
+  ${(props) =>
+    props.isVisible &&
+    css`
+      animation: ${showElement} 1s forwards;
+    `}
+`;
 const BioDescription = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   opacity: 0;
   ${(props) =>
@@ -67,6 +78,9 @@ function Bio() {
         <BioImgContainer>
           <BioImg src="images/bio_sample.jpg" />
         </BioImgContainer>
+        <BioDescriptionTitle isVisible={isVisible}>
+          Biography Title
+        </BioDescriptionTitle>
         <BioDescription isVisible={isVisible}>
           <Profile>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
