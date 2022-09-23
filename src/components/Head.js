@@ -53,7 +53,8 @@ const Img = styled.img`
 const HeadTitle = styled.div`
   position: absolute;
   color: white;
-  font-family: "Montserrat", sans-serif;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Poiret One", cursive;
   font-size: 25px;
   letter-spacing: 0.5em;
   opacity: 0;

@@ -1,4 +1,6 @@
-import styled, { keyframes } from "styled-components";
+import { useEffect } from "react";
+import { useState } from "react";
+import styled, { css, keyframes } from "styled-components";
 import { showElement } from "../GlobalStyle";
 
 const BioContainer = styled.div`
@@ -27,8 +29,13 @@ const BioDescription = styled.div`
   margin-top: 50px;
   display: flex;
   opacity: 0;
-  animation: ${showElement} 1s forwards;
-  animation-delay: 1.5s;
+  ${(props) =>
+    props.isVisible &&
+    css`
+      animation: ${showElement} 1s forwards;
+    `}
+
+  /* animation-delay: 1.5s; */
   font-family: "Montserrat", sans-serif;
   letter-spacing: 0.1em;
 `;
@@ -41,13 +48,26 @@ const Comment = styled.div`
   padding-right: 30px;
 `;
 function Bio() {
+  const [isVisible, setIsVisible] = useState(false);
+  const [offsetY, setOffsetY] = useState();
+  const handleScroll = () => {
+    setOffsetY(window.scrollY);
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []);
+  useEffect(() => {
+    if (offsetY > 130) {
+      setIsVisible(true);
+    }
+  }, [offsetY]);
   return (
     <BioContainer>
       <BioContentContainer>
         <BioImgContainer>
           <BioImg src="images/bio_sample.jpg" />
         </BioImgContainer>
-        <BioDescription>
+        <BioDescription isVisible={isVisible}>
           <Profile>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim

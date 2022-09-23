@@ -4,17 +4,18 @@ import { showElement } from "../GlobalStyle";
 
 const spreadLetter = keyframes`
   0%{
-    margin : 0px -15px;
+    margin : 0px 13px;
   }
   70% {
     margin : 0px 15px;
   }
   100%{
-    margin : 0px 14px;
+    margin : 0px 15px;
   }
 `;
 
 const HomeContentContainer = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,14 +23,16 @@ const HomeContentContainer = styled.div`
 const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 400px;
+  margin-top: 200px;
   margin-bottom: 10px;
 `;
 
 const LetterContainer = styled.div`
   font-size: 60px;
-  /* font-family: "Raleway", sans-serif; */
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poiret One", cursive;
+  /* font-family: "Marcellus", serif; */
+  /* font-family: "Quattrocento", serif; */
+  /* font-family: "Montserrat", sans-serif; */
   font-weight: light;
   animation: ${spreadLetter} 1.5s forwards;
 `;

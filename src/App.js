@@ -25,8 +25,8 @@ const Content = styled.div`
   background-color: #181818;
   color: white;
   position: absolute;
-  height: 100%;
-  overflow-y: scroll;
+  /* height: 100vh; */
+  /* overflow-y: scroll; */
   width: 100%;
 `;
 function App() {

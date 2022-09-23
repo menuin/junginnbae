@@ -43,7 +43,9 @@ const NavContainer = styled.div`
 const NavTitle = styled.div`
   font-family: "Raleway", sans-serif;
 
-  color: #d8d8d8;
+  /* color: #d8d8d8; */
+  color: #7c7c7c;
+
   position: fixed;
   bottom: 70px;
 `;
