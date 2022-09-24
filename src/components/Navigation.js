@@ -39,13 +39,17 @@ const NavContainer = styled.div`
       }
       opacity: 0;
     `}
+  ${(props) =>
+    props.isScrollEnd === true &&
+    css`
+      animation: ${showElement} 1s forwards;
+      animation-delay: 0.2s;
+    `}
 `;
 const NavTitle = styled.div`
   font-family: "Raleway", sans-serif;
-
   /* color: #d8d8d8; */
   color: #7c7c7c;
-
   position: fixed;
   bottom: 70px;
 `;
@@ -75,7 +79,7 @@ const NavLink = styled(Link)`
   width: 100%;
 `;
 
-function Navigation() {
+function Navigation({ isScrollEnd, setIsScrollEnd }) {
   const [title, setTitle] = useState("");
   const navList = [
     "home",
@@ -87,6 +91,10 @@ function Navigation() {
     "contact",
   ];
   const crntPath = window.location.pathname;
+  useEffect(() => {
+    // hide nav when route changes
+    setIsScrollEnd(false);
+  }, [crntPath]);
   const showTitle = (event) => {
     setTitle(event.currentTarget.id);
   };
@@ -95,7 +103,7 @@ function Navigation() {
   };
   return (
     <>
-      <NavContainer crntPath={crntPath}>
+      <NavContainer isScrollEnd={isScrollEnd} crntPath={crntPath}>
         <NavTitle>{title.toUpperCase()}</NavTitle>
         <NavKeyContainer>
           {navList.map((nav, index) => {

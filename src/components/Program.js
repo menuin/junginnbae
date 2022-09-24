@@ -4,6 +4,8 @@ const ProgramContainer = styled.div`
   display: flex;
   flex-direction: row;
   margin: 0px 0px 40px;
+  /* padding: 10px 10px; */
+  /* border-bottom: 1px solid #585858; */
 `;
 const PosterContainer = styled.div`
   width: 250px;

@@ -58,8 +58,9 @@ const Comment = styled.div`
   width: 500px;
   padding-right: 30px;
 `;
+
 function Bio() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false); // visibility of bio description
   const [offsetY, setOffsetY] = useState();
   const handleScroll = () => {
     setOffsetY(window.scrollY);
@@ -67,11 +68,13 @@ function Bio() {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   }, []);
+
   useEffect(() => {
-    if (offsetY > 130) {
+    if (offsetY > 150) {
       setIsVisible(true);
     }
   }, [offsetY]);
+
   return (
     <BioContainer>
       <BioContentContainer>
