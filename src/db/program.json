@@ -1,0 +1,22 @@
+{
+  "programs": [
+    {
+      "title": "Joint Recital",
+      "date": "2022-08-20",
+      "starttime": "12:00 PM",
+      "performer": ["배정인", "견종진"],
+      "repertoire": ["F.Chopin", "J.S. Bach-Busoni", "J.Brahms"],
+      "place": "케이엘뮤직센터",
+      "poster": "images/poster_sample1.jpg"
+    },
+    {
+      "title": "풍요와 절제... 그 아슬아슬한 줄타기",
+      "date": "2022-06-20",
+      "starttime": "07:30 PM",
+      "performer": ["배정인", "이귀란", "김성은"],
+      "repertoire": ["C.Debussy", "G.Faure", "S.Rachmaninoff", "F.Poulenc"],
+      "place": "케이엘뮤직센터",
+      "poster": "images/poster_sample2.jpg"
+    }
+  ]
+}

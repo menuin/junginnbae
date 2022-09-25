@@ -30,19 +30,19 @@ const ProgramRep = styled.div`
   font-family: "Source Code Pro", monospace;
   color: #7c7c7c;
 `;
-function Program({ url }) {
+function Program({ program }) {
   return (
     <ProgramContainer>
       <PosterContainer>
-        <PosterImg src={url} />
+        <PosterImg src={program.poster} />
       </PosterContainer>
       <ProgramDescription>
-        <ProgramTitle>Joint Recital at Amsterdam, Netherlands</ProgramTitle>
+        <ProgramTitle>{program.title}</ProgramTitle>
         <ProgramSchedule>
-          SATURDAY, AUGUST 20 <br />
-          12:00 PM - 2:00 PM
+          {program.date} <br />
+          {program.starttime}
         </ProgramSchedule>
-        <ProgramRep>F. Chopin, J.S. Bach-Busoni, J.Brahms</ProgramRep>
+        <ProgramRep>{program.repertoire}</ProgramRep>
       </ProgramDescription>
     </ProgramContainer>
   );
