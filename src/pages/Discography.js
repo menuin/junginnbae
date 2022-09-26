@@ -1,11 +1,17 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const SampleContainer = styled.div`
   margin-top: 200px;
 `;
 function Discography() {
   const [text, setText] = useState("");
+  let location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   const handleChange = (e) => {
     setText(e.target.value);
   };

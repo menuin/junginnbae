@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { showElement } from "../GlobalStyle";
 
@@ -62,6 +63,10 @@ const Comment = styled.div`
 function Bio() {
   const [isVisible, setIsVisible] = useState(false); // visibility of bio description
   const [offsetY, setOffsetY] = useState();
+  let location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   const handleScroll = () => {
     setOffsetY(window.scrollY);
   };

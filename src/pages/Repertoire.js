@@ -3,6 +3,8 @@ import Program from "../components/Program";
 import { showElement } from "../GlobalStyle";
 import programdata from "../db/program.json";
 import PrevProgram from "../components/PrevProgram";
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const NoEventAlert = styled.div`
   text-align: center;
@@ -39,9 +41,17 @@ const UpcomingEvents = styled.div`
   /* justify-content: center; */
   color: white;
 `;
-const PrevPrograms = styled.div``;
+const PrevPrograms = styled.div`
+  opacity: 0;
+  animation: ${showElement} 1s forwards;
+  animation-delay: 1.5s;
+`;
 
 function Repertoire() {
+  let location = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
   let upcomingEvents = programdata.programs
     .filter((e) => {
       return new Date(e.date) > new Date();
@@ -50,7 +60,6 @@ function Repertoire() {
       // sort in order of date
       return new Date(a.date) - new Date(b.date);
     });
-  console.log(upcomingEvents == []);
   return (
     <RepContainer>
       <RepContentContainer>
