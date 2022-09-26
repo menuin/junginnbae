@@ -54,11 +54,13 @@ const NavTitle = styled.div`
   bottom: 70px;
 `;
 const NavKeyContainer = styled.div`
-  width: 576px;
+  width: 580px;
+  /* background-color: red; */
   height: 30px;
   position: fixed;
   display: flex;
   bottom: 0;
+  justify-content: center;
 `;
 
 const KeyWrap = styled.div`
@@ -69,7 +71,7 @@ const KeyWrap = styled.div`
   padding: 0px;
   padding-top: 30px;
   animation: ${keyAppear} 1s forwards;
-  animation-delay: ${(props) => Math.abs(props.index - 3) / 6}s;
+  animation-delay: ${(props) => Math.abs(props.index - 2) / 6}s;
   & :hover {
     animation: ${keyDown} 1s forwards;
   }
@@ -84,8 +86,8 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
   const navList = [
     "home",
     "bio",
-    "discography",
-    "videos",
+    // "discography",
+    // "videos",
     "repertoire",
     "class",
     "contact",
