@@ -15,9 +15,9 @@ const changeImgOpacity = keyframes`
   0% {
     opacity:0.5 ;
   }
-  60% {
+  /* 60% {
     opacity:0.5;
-  }
+  } */
   100%{
     opacity:0 ;
   }

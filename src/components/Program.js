@@ -1,34 +1,59 @@
 import styled from "styled-components";
 
-const ProgramContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin: 0px 0px 40px;
-  /* padding: 10px 10px; */
-  /* border-bottom: 1px solid #585858; */
-`;
 const PosterContainer = styled.div`
-  width: 250px;
+  width: 300px;
+  /* height: 300px; */
+`;
+
+const ProgramDescription = styled.div`
+  /* margin: 30px 50px 0px; */
+  position: absolute;
+  color: white;
+  opacity: 0;
+  bottom: 50px;
+  left: 20px;
 `;
 const PosterImg = styled.img`
   width: 100%;
 `;
-const ProgramDescription = styled.div`
-  margin: 50px 50px 0px;
-`;
 const ProgramTitle = styled.div`
-  font-size: 30px;
-  font-family: "Poiret One", cursive;
-  margin-bottom: 50px;
+  font-size: 17px;
+  /* font-family: "Poiret One", cursive; */
+  /* font-family: "Gowun Dodum", sans-serif; */
+  /* font-family: "Gowun Batang", serif; */
+  font-family: "Noto Sans KR", sans-serif;
+  margin-top: 10px;
 `;
 const ProgramSchedule = styled.div`
-  font-family: "Source Code Pro", monospace;
+  /* font-family: "Source Code Pro", monospace; */
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
   color: #b4b4b4;
-  margin-bottom: 10px;
+  margin-top: 150px;
 `;
 const ProgramRep = styled.div`
   font-family: "Source Code Pro", monospace;
   color: #7c7c7c;
+  display: flex;
+`;
+const ProgramPerformer = styled.div`
+  display: flex;
+  font-family: "Noto Sans KR", sans-serif;
+  color: #888888;
+`;
+const ProgramContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  margin: 0px 20px 40px;
+  /* padding: 10px 10px; */
+  /* border-bottom: 1px solid #585858; */
+  &:hover ${PosterImg} {
+    opacity: 0.2;
+  }
+  &:hover ${ProgramDescription} {
+    opacity: 1;
+  }
 `;
 function Program({ program }) {
   return (
@@ -37,12 +62,13 @@ function Program({ program }) {
         <PosterImg src={program.poster} />
       </PosterContainer>
       <ProgramDescription>
+        <ProgramSchedule>{program.date}</ProgramSchedule>
+        {/* <ProgramPerformer>
+          {program.performer.map((name, index) => {
+            return <>{name}&nbsp;&nbsp;</>;
+          })}
+        </ProgramPerformer> */}
         <ProgramTitle>{program.title}</ProgramTitle>
-        <ProgramSchedule>
-          {program.date} <br />
-          {program.starttime}
-        </ProgramSchedule>
-        <ProgramRep>{program.repertoire}</ProgramRep>
       </ProgramDescription>
     </ProgramContainer>
   );

@@ -41,7 +41,7 @@ function App() {
   };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-  }, []);
+  });
   // show nav when scroll reaches the end in each page
   const handleScrollEnd = () => {
     setIsScrollEnd(true);
