@@ -114,7 +114,7 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
                 onMouseOver={showTitle}
                 onMouseOut={hideTitle}
                 id={nav}
-                index={index}
+                key={index}
               >
                 <NavLink to={nav === "home" ? "/" : "/" + nav}>
                   <Key id={index}></Key>

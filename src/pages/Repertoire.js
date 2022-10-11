@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import Program from "../components/Program";
 import { showElement } from "../GlobalStyle";
-import programdata from "../db/program.json";
 import PrevProgram from "../components/PrevProgram";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const NoEventAlert = styled.div`
   text-align: center;
@@ -48,18 +48,35 @@ const PrevPrograms = styled.div`
 `;
 
 function Repertoire() {
+  const [programs, setPrograms] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
   let location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-  let upcomingEvents = programdata.programs
-    .filter((e) => {
-      return new Date(e.date) > new Date();
-    })
-    .sort((a, b) => {
-      // sort in order of date
-      return new Date(a.date) - new Date(b.date);
-    });
+  useEffect(() => {
+    async function fetchData() {
+      const { data: response } = await axios.get(
+        "http://localhost:3001/programs"
+      );
+
+      setPrograms(response);
+    }
+    fetchData();
+  }, []);
+  useEffect(() => {
+    setUpcomingEvents(
+      programs
+        .filter((e) => {
+          return new Date(e.date) > new Date();
+        })
+        .sort((a, b) => {
+          // sort in order of date
+          return new Date(a.date) - new Date(b.date);
+        })
+    );
+  }, [programs]);
+
   return (
     <RepContainer>
       <RepContentContainer>
@@ -71,21 +88,24 @@ function Repertoire() {
               There are no upcoming programs at this moment.
             </NoEventAlert>
           ) : (
-            upcomingEvents.map((program, data) => {
-              return <Program program={program} />;
+            upcomingEvents.map((program, index) => {
+              return <Program program={program} key={index} />;
             })
           )}
         </UpcomingEvents>
+
         <PrevPrograms>
           <RepTitle>Previous Programs</RepTitle>
-          <></>
-          {programdata.programs
-            .filter((e) => {
-              return new Date(e.date) < new Date();
-            })
-            .map((program, index) => {
-              return <PrevProgram program={program} />;
-            })}
+
+          <>
+            {programs
+              .filter((e) => {
+                return new Date(e.date) < new Date();
+              })
+              .map((program, index) => {
+                return <PrevProgram program={program} key={index} />;
+              })}
+          </>
         </PrevPrograms>
       </RepContentContainer>
     </RepContainer>
