@@ -25,6 +25,7 @@ const RepContentContainer = styled.div`
 const RepTitle = styled.div`
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
+  font-weight: 200;
   /* text-align: center; */
   margin: 40px 0px 50px;
   padding-bottom: 12px;

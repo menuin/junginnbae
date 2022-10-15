@@ -49,6 +49,7 @@ const BioDescription = styled.div`
 
   /* animation-delay: 1.5s; */
   font-family: "Montserrat", sans-serif;
+  font-weight: 200;
   letter-spacing: 0.1em;
 `;
 const Profile = styled.div`
