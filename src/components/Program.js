@@ -46,6 +46,7 @@ const ProgramContainer = styled.div`
   flex-direction: row;
   position: relative;
   margin: 0px 20px 40px;
+  overflow: hidden;
   /* padding: 10px 10px; */
   /* border-bottom: 1px solid #585858; */
   &:hover ${PosterImg} {
