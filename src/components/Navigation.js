@@ -33,6 +33,7 @@ const NavContainer = styled.div`
   background: transparent;
   ${(props) =>
     props.crntPath !== "/" &&
+    props.crntPath !== "/contact" &&
     css`
       &:hover {
         animation: ${showElement} 1s forwards;
