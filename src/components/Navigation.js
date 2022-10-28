@@ -83,8 +83,7 @@ const NavLink = styled(Link)`
   width: 100%;
 `;
 
-function Navigation({ isScrollEnd, setIsScrollEnd }) {
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+function Navigation({ isScrollEnd, setIsScrollEnd, isTablet }) {
   const [title, setTitle] = useState("");
   const navList = [
     "home",

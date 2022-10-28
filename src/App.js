@@ -13,6 +13,7 @@ import Repertoire from "./pages/Repertoire";
 import Videos from "./pages/Videos";
 import { BottomScrollListener } from "react-bottom-scroll-listener";
 import { useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 
 const Nav = styled.div``;
 const HeadContainer = styled.div`
@@ -32,6 +33,10 @@ const Content = styled.div`
   width: 100%;
 `;
 function App() {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTableOrMobile = useMediaQuery({ maxWidth: 1023 });
+  const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isScrollEnd, setIsScrollEnd] = useState(false);
   const handleScroll = () => {
     // hide nav when scroll moves upward from the very bottom of the page
@@ -55,17 +60,24 @@ function App() {
           <Navigation
             setIsScrollEnd={setIsScrollEnd}
             isScrollEnd={isScrollEnd}
+            isTablet={isTablet}
           />
           {/* add bottom scroll listener to every route */}
           <BottomScrollListener onBottom={handleScrollEnd}>
             <Routes>
               <Route path="/" element={<Home />}></Route>
-              <Route path="/bio" element={<Bio />}></Route>
+              <Route
+                path="/bio"
+                element={<Bio isDesktop={isDesktop} />}
+              ></Route>
               <Route path="/discography" element={<Discography />}></Route>
               <Route path="/videos" element={<Videos />}></Route>
               <Route path="/repertoire" element={<Repertoire />}></Route>
               <Route path="/class" element={<Class />}></Route>
-              <Route path="/contact" element={<Contact />}></Route>
+              <Route
+                path="/contact"
+                element={<Contact isTablet={isTablet} />}
+              ></Route>
             </Routes>
           </BottomScrollListener>
         </Router>

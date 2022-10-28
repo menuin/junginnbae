@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const seeCard = keyframes`
   0%{
@@ -57,10 +57,20 @@ const Card = styled.button`
   border: none;
   box-shadow: 20px 20px 20px #4b4b4b;
   transform: rotateX(60deg) rotateY(0deg) rotateZ(45deg) translateZ(5px);
-  &:hover {
-    animation: ${seeCard} 0.5s forwards;
-    box-shadow: 10px 10px 10px #4b4b4b;
-  }
+  ${(props) =>
+    !props.isTablet
+      ? css`
+          &:hover {
+            animation: ${seeCard} 0.5s forwards;
+            box-shadow: 10px 10px 10px #4b4b4b;
+          }
+        `
+      : css`
+          &:focus {
+            animation: ${seeCard} 0.5s forwards;
+            box-shadow: 10px 10px 10px #4b4b4b;
+          }
+        `}
 `;
 const ContactContent = styled.div`
   display: flex;
@@ -75,7 +85,7 @@ const ContactContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-function Contact() {
+function Contact({ isTablet }) {
   let location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,7 +93,7 @@ function Contact() {
   return (
     <ContactContainer>
       <ContactContent>
-        <Card>
+        <Card isTablet={isTablet}>
           <div
             style={{
               width: "40px",
