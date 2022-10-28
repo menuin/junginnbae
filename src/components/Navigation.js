@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { showElement } from "../GlobalStyle";
@@ -34,6 +35,7 @@ const NavContainer = styled.div`
   ${(props) =>
     props.crntPath !== "/" &&
     props.crntPath !== "/contact" &&
+    !props.isTablet &&
     css`
       &:hover {
         animation: ${showElement} 1s forwards;
@@ -42,6 +44,7 @@ const NavContainer = styled.div`
     `}
   ${(props) =>
     props.isScrollEnd === true &&
+    !props.isTablet &&
     css`
       animation: ${showElement} 1s forwards;
       animation-delay: 0.2s;
@@ -49,14 +52,12 @@ const NavContainer = styled.div`
 `;
 const NavTitle = styled.div`
   font-family: "Raleway", sans-serif;
-  /* color: #d8d8d8; */
   color: #7c7c7c;
   position: fixed;
   bottom: 70px;
 `;
 const NavKeyContainer = styled.div`
   width: 580px;
-  /* background-color: red; */
   height: 30px;
   position: fixed;
   display: flex;
@@ -83,6 +84,7 @@ const NavLink = styled(Link)`
 `;
 
 function Navigation({ isScrollEnd, setIsScrollEnd }) {
+  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
   const [title, setTitle] = useState("");
   const navList = [
     "home",
@@ -106,7 +108,11 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
   };
   return (
     <>
-      <NavContainer isScrollEnd={isScrollEnd} crntPath={crntPath}>
+      <NavContainer
+        isScrollEnd={isScrollEnd}
+        isTablet={isTablet}
+        crntPath={crntPath}
+      >
         <NavTitle>{title.toUpperCase()}</NavTitle>
         <NavKeyContainer>
           {navList.map((nav, index) => {
