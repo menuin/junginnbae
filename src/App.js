@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import "./App.css";
 import Head from "./components/Head";
 import Navigation from "./components/Navigation";
@@ -14,6 +14,7 @@ import Videos from "./pages/Videos";
 import { BottomScrollListener } from "react-bottom-scroll-listener";
 import { useEffect } from "react";
 import { useMediaQuery } from "react-responsive";
+import theme from "./theme";
 
 const Nav = styled.div``;
 const HeadContainer = styled.div`
@@ -33,8 +34,8 @@ const Content = styled.div`
   width: 100%;
 `;
 function App() {
-  const isTablet = useMediaQuery({ minWidth: 768, maxWidth: 1023 });
-  const isMobile = useMediaQuery({ maxWidth: 767 });
+  const isTablet = useMediaQuery({ minWidth: 554, maxWidth: 1023 });
+  const isMobile = useMediaQuery({ maxWidth: 553 });
   const isTableOrMobile = useMediaQuery({ maxWidth: 1023 });
   const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isScrollEnd, setIsScrollEnd] = useState(false);
@@ -53,36 +54,34 @@ function App() {
     setIsScrollEnd(true);
   };
   return (
-    <Nav>
-      <Content>
-        <Router>
-          <Head />
-          <Navigation
-            setIsScrollEnd={setIsScrollEnd}
-            isScrollEnd={isScrollEnd}
-            isTablet={isTablet}
-          />
-          {/* add bottom scroll listener to every route */}
-          <BottomScrollListener onBottom={handleScrollEnd}>
-            <Routes>
-              <Route path="/" element={<Home />}></Route>
-              <Route
-                path="/bio"
-                element={<Bio isDesktop={isDesktop} />}
-              ></Route>
-              <Route path="/discography" element={<Discography />}></Route>
-              <Route path="/videos" element={<Videos />}></Route>
-              <Route path="/repertoire" element={<Repertoire />}></Route>
-              <Route path="/class" element={<Class />}></Route>
-              <Route
-                path="/contact"
-                element={<Contact isTablet={isTablet} />}
-              ></Route>
-            </Routes>
-          </BottomScrollListener>
-        </Router>
-      </Content>
-    </Nav>
+    <ThemeProvider theme={theme}>
+      <Nav>
+        <Content>
+          <Router>
+            <Head />
+            <Navigation
+              setIsScrollEnd={setIsScrollEnd}
+              isScrollEnd={isScrollEnd}
+            />
+            {/* add bottom scroll listener to every route */}
+            <BottomScrollListener onBottom={handleScrollEnd}>
+              <Routes>
+                <Route path="/" element={<Home />}></Route>
+                <Route path="/bio" element={<Bio />}></Route>
+                <Route path="/discography" element={<Discography />}></Route>
+                <Route path="/videos" element={<Videos />}></Route>
+                <Route path="/repertoire" element={<Repertoire />}></Route>
+                <Route path="/class" element={<Class />}></Route>
+                <Route
+                  path="/contact"
+                  element={<Contact isTablet={isTablet} />}
+                ></Route>
+              </Routes>
+            </BottomScrollListener>
+          </Router>
+        </Content>
+      </Nav>
+    </ThemeProvider>
   );
 }
 

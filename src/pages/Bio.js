@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { showElement } from "../GlobalStyle";
@@ -7,11 +8,13 @@ import { showElement } from "../GlobalStyle";
 const BioImgContainer = styled.div`
   /* width: 1000px; */
   width: 100%;
-  /* height: 650px; */
   overflow: hidden;
   opacity: 0;
   animation: ${showElement} 1s forwards;
   animation-delay: 1.5s;
+  @media ${({ theme }) => theme.device.laptop} {
+    height: 700px;
+  }
 `;
 const BioImg = styled.img`
   width: 100%;
@@ -26,23 +29,21 @@ const BioDescription = styled.div`
   display: flex;
   flex-wrap: wrap;
   opacity: 0;
-  ${(props) =>
+  /* ${(props) =>
     props.isVisible &&
     css`
       animation: ${showElement} 1s forwards;
-    `}
-
-  /* animation-delay: 1.5s; */
+    `} */
+  animation: ${showElement} 1s forwards;
+  animation-delay: 2s;
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
   letter-spacing: 0.1em;
-  ${(props) =>
-    props.isDesktop &&
-    css`
-      ${Profile} {
-        width: 45%;
-      }
-    `}
+  @media ${({ theme }) => theme.device.laptop} {
+    ${Profile} {
+      width: 45%;
+    }
+  }
 `;
 const BioDescriptionTitle = styled.div`
   font-family: "Montserrat", sans-serif;
@@ -50,11 +51,13 @@ const BioDescriptionTitle = styled.div`
   width: 100%;
   margin-top: 80px;
   opacity: 0;
-  ${(props) =>
+  animation: ${showElement} 1s forwards;
+  animation-delay: 2s;
+  /* ${(props) =>
     props.isVisible &&
     css`
       animation: ${showElement} 1s forwards;
-    `}
+    `} */
 `;
 const BioDescriptionContainer = styled.div`
   width: 80%;
@@ -74,7 +77,7 @@ const BioContainer = styled.div`
   display: flex;
   justify-content: center;
 `;
-function Bio({ isDesktop }) {
+function Bio() {
   const [isVisible, setIsVisible] = useState(false); // visibility of bio description
   const [offsetY, setOffsetY] = useState();
   let location = useLocation();
@@ -104,7 +107,7 @@ function Bio({ isDesktop }) {
           <BioDescriptionTitle isVisible={isVisible}>
             Biography Title
           </BioDescriptionTitle>
-          <BioDescription isVisible={isVisible} isDesktop={isDesktop}>
+          <BioDescription isVisible={isVisible}>
             <Profile>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut

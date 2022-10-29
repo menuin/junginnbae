@@ -14,7 +14,6 @@ const PPTitle = styled.div`
 `;
 const PrevProgramContainer = styled.div`
   border-left: 3px solid #665607;
-  height: 100px;
   margin-bottom: 50px;
   margin-left: 15px;
   padding: 10px 30px 20px;
@@ -26,15 +25,14 @@ function PrevProgram({ program }) {
       <PPDate>
         {program.date}&nbsp;&nbsp;{program.starttime}
       </PPDate>
-      <PPRep>
-        {program.repertoire.map((rep, index) => {
-          return (
-            <>
-              {rep}&nbsp;{"/"}&nbsp;
-            </>
-          );
-        })}
-      </PPRep>
+
+      {program.repertoire.map((rep, index) => {
+        return (
+          <PPRep>
+            {rep}&nbsp;{"/"}&nbsp;
+          </PPRep>
+        );
+      })}
     </PrevProgramContainer>
   );
 }

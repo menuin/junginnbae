@@ -12,11 +12,6 @@ const spreadClass = keyframes`
 `;
 const ClassDescription = styled.div`
   display: none;
-  /* ${(props) =>
-    props.isSelected === true &&
-    css`
-      animation: ${spreadClass} 1s forwards;
-    `} */
   margin: 20px 20px;
   display: none;
 `;
@@ -29,6 +24,9 @@ const ClassTitle = styled.div``;
 const ClassHead = styled.div`
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 18px;
+  }
   font-weight: 300;
   display: flex;
   justify-content: space-between;
@@ -41,10 +39,13 @@ const ClassType = styled.div`
   border-radius: 5px;
   padding: 20px 30px;
   margin-bottom: 20px;
-  &:hover {
-    color: black;
-    background-color: white;
+  @media ${({ theme }) => theme.device.laptop} {
+    &:hover {
+      color: black;
+      background-color: white;
+    }
   }
+
   ${(props) =>
     props.isSelected === true &&
     css`

@@ -12,15 +12,18 @@ const NoEventAlert = styled.div`
   margin: 80px 0px;
   font-family: "Montserrat", sans-serif;
 `;
-const RepContainer = styled.div`
-  margin: 70px 0px 120px;
-  display: flex;
-  justify-content: center;
+const PrevPrograms = styled.div`
+  opacity: 0;
+  animation: ${showElement} 1s forwards;
+  animation-delay: 1.5s;
 `;
-const RepContentContainer = styled.div`
-  width: 1000px;
+const UpcomingEvents = styled.div`
+  opacity: 0;
+  animation: ${showElement} 1s forwards;
+  animation-delay: 1.5s;
   display: flex;
-  flex-direction: column;
+  /* justify-content: center; */
+  color: white;
 `;
 const RepTitle = styled.div`
   font-family: "Montserrat", sans-serif;
@@ -34,20 +37,16 @@ const RepTitle = styled.div`
   animation: ${showElement} 1s forwards;
   animation-delay: 1s;
 `;
-const UpcomingEvents = styled.div`
-  opacity: 0;
-  animation: ${showElement} 1s forwards;
-  animation-delay: 1.5s;
+const RepContentContainer = styled.div`
+  width: 80%;
+  margin: 70px 0px 250px;
   display: flex;
-  /* justify-content: center; */
-  color: white;
+  flex-direction: column;
 `;
-const PrevPrograms = styled.div`
-  opacity: 0;
-  animation: ${showElement} 1s forwards;
-  animation-delay: 1.5s;
+const RepContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;
-
 function Repertoire() {
   const [programs, setPrograms] = useState([]);
   const [upcomingEvents, setUpcomingEvents] = useState([]);

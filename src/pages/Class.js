@@ -15,7 +15,7 @@ const imgSlideDown = keyframes`
 `;
 const imgSlideUp = keyframes`
   0% {
-    top:400px;
+    top:500px;
   }
   100% {
     top:50px;
@@ -37,35 +37,6 @@ const ClassContentTitle = styled.div`
   animation: ${showElement} 1s forwards;
   animation-delay: 1s;
 `;
-const ClassContentContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 1000px;
-`;
-const ClassImg = styled.img`
-  position: relative;
-  width: 150px;
-  height: 400px;
-  margin-right: 10px;
-  ${(props) =>
-    props.index % 2 === 0
-      ? css`
-          top: 400px;
-          animation: ${imgSlideUp} 1.3s forwards;
-        `
-      : css`
-          bottom: 400px;
-          animation: ${imgSlideDown} 1s forwards;
-        `}
-  animation-delay:1s;
-`;
-const ClassImgContainer = styled.div`
-  position: relative;
-  width: 1300px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-`;
 const ContactLink = styled(Link)`
   width: 150px;
   height: 50px;
@@ -77,22 +48,65 @@ const ContactLink = styled(Link)`
   text-decoration: none;
   color: white;
   opacity: 0;
-  &:hover {
-    background-color: white;
-    color: black;
+  @media ${({ theme }) => theme.device.laptop} {
+    &:hover {
+      background-color: white;
+      color: black;
+    }
   }
+
   font-family: "Montserrat", sans-serif;
   animation: ${showElement} 1s forwards;
   animation-delay: 3.7s;
 `;
-
-const ClassIntro = styled.div``;
+const ClassImg = styled.img`
+  position: relative;
+  width: 150px;
+  height: 400px;
+  margin-right: 10px;
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 100px;
+  }
+  ${(props) =>
+    props.index % 2 === 0
+      ? css`
+          top: 500px;
+          animation: ${imgSlideUp} 1.5s forwards;
+        `
+      : css`
+          bottom: 400px;
+          animation: ${imgSlideDown} 1s forwards;
+        `}
+  animation-delay:1s;
+`;
+const ClassImgContainer = styled.div`
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+`;
+const ClassIntro = styled.div`
+  width: 500px;
+  padding-top: 40px;
+  justify-content: center;
+  @media ${({ theme }) => theme.device.laptop} {
+    margin-left: 40px;
+  }
+`;
 const ClassIntroContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-top: 40px;
+  /* align-items: center; */
+`;
+const ClassContentContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 70px 0px 120px;
 `;
 const ClassContainer = styled.div`
-  margin: 70px 0px 120px;
   display: flex;
   justify-content: center;
 `;
@@ -111,15 +125,15 @@ function Class() {
     <ClassContainer>
       <ClassContentContainer>
         <ClassIntroContainer>
-          <ClassIntro>
-            <ClassIntroWord />
-            <ContactLink to="/contact">contact</ContactLink>
-          </ClassIntro>
           <ClassImgContainer>
             {classImgs.map((img, index) => {
               return <ClassImg index={index} src={img} />;
             })}
           </ClassImgContainer>
+          <ClassIntro>
+            <ClassIntroWord />
+            <ContactLink to="/contact">contact</ContactLink>
+          </ClassIntro>
         </ClassIntroContainer>
         <ClassContentTitle>Class Information</ClassContentTitle>
         <ClassTypeContainer>

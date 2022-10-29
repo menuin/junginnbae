@@ -35,19 +35,21 @@ const NavContainer = styled.div`
   ${(props) =>
     props.crntPath !== "/" &&
     props.crntPath !== "/contact" &&
-    !props.isTablet &&
     css`
-      &:hover {
-        animation: ${showElement} 1s forwards;
+      @media ${({ theme }) => theme.device.laptop} {
+        &:hover {
+          animation: ${showElement} 1s forwards;
+        }
+        opacity: 0;
       }
-      opacity: 0;
     `}
   ${(props) =>
     props.isScrollEnd === true &&
-    !props.isTablet &&
     css`
-      animation: ${showElement} 1s forwards;
-      animation-delay: 0.2s;
+      @media ${({ theme }) => theme.device.laptop} {
+        animation: ${showElement} 1s forwards;
+        animation-delay: 0.2s;
+      }
     `}
 `;
 const NavTitle = styled.div`
@@ -64,7 +66,10 @@ const NavKeyContainer = styled.div`
   bottom: 0;
   justify-content: center;
 `;
-
+const NavLink = styled(Link)`
+  display: inline-block;
+  width: 100%;
+`;
 const KeyWrap = styled.div`
   width: 80px;
   display: flex;
@@ -74,16 +79,14 @@ const KeyWrap = styled.div`
   padding-top: 30px;
   animation: ${keyAppear} 1s forwards;
   animation-delay: ${(props) => Math.abs(props.index - 2) / 6}s;
-  & :hover {
+  @media ${({ theme }) => theme.device.laptop} {
+  }
+  ${NavLink}:hover {
     animation: ${keyDown} 1s forwards;
   }
 `;
-const NavLink = styled(Link)`
-  display: inline-block;
-  width: 100%;
-`;
 
-function Navigation({ isScrollEnd, setIsScrollEnd, isTablet }) {
+function Navigation({ isScrollEnd, setIsScrollEnd }) {
   const [title, setTitle] = useState("");
   const navList = [
     "home",
@@ -107,11 +110,7 @@ function Navigation({ isScrollEnd, setIsScrollEnd, isTablet }) {
   };
   return (
     <>
-      <NavContainer
-        isScrollEnd={isScrollEnd}
-        isTablet={isTablet}
-        crntPath={crntPath}
-      >
+      <NavContainer isScrollEnd={isScrollEnd} crntPath={crntPath}>
         <NavTitle>{title.toUpperCase()}</NavTitle>
         <NavKeyContainer>
           {navList.map((nav, index) => {
