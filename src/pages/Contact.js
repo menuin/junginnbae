@@ -116,7 +116,7 @@ function Contact({ isTablet }) {
           <CardContent>
             <Title>
               <Korean>배정인</Korean>
-              <English>Clara Jungin Bae</English>
+              <English>Clara Junginn Bae</English>
             </Title>
             <ContactInfo>P _ 010 1234 5678</ContactInfo>
             <ContactInfo>E _ myemail@gmail.com</ContactInfo>
@@ -127,7 +127,7 @@ function Contact({ isTablet }) {
           <MobileCardContent>
             <Title>
               <Korean>배정인</Korean>
-              <English>Clara Jungin Bae</English>
+              <English>Clara Junginn Bae</English>
             </Title>
             <ContactInfo>P _ 010 1234 5678</ContactInfo>
             <ContactInfo>E _ contactemail@gmail.com</ContactInfo>
