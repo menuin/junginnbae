@@ -96,7 +96,7 @@ const LanSelectBtn = styled.div`
 `;
 
 function Home() {
-  const titleLetters = ["J", "U", "N", "G", "I", "N", " ", "P", "A", "E"];
+  const titleLetters = ["J", "U", "N", "G", "I", "N", " ", "B", "A", "E"];
   return (
     <HomeContentContainer>
       <TitleContainer>
@@ -106,7 +106,7 @@ function Home() {
       </TitleContainer>
       <MobileTitleContainer>
         <MobileTitle>J U N G I N</MobileTitle>
-        <MobileTitle>P A E</MobileTitle>
+        <MobileTitle>B A E</MobileTitle>
       </MobileTitleContainer>
       <SubTitleContainer>pianist</SubTitleContainer>
       {/* <HomeBtnContainer>
