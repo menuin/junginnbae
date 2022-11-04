@@ -35,9 +35,6 @@ const Content = styled.div`
 `;
 function App() {
   const isTablet = useMediaQuery({ minWidth: 554, maxWidth: 1023 });
-  const isMobile = useMediaQuery({ maxWidth: 553 });
-  const isTableOrMobile = useMediaQuery({ maxWidth: 1023 });
-  const isDesktop = useMediaQuery({ minWidth: 1024 });
   const [isScrollEnd, setIsScrollEnd] = useState(false);
   const handleScroll = () => {
     // hide nav when scroll moves upward from the very bottom of the page

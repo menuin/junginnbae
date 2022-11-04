@@ -57,7 +57,7 @@ function Repertoire() {
   useEffect(() => {
     async function fetchData() {
       const { data: response } = await axios.get(
-        "http://localhost:3001/programs"
+        "http://localhost:1124/programs"
       );
 
       setPrograms(response);

@@ -1,11 +1,10 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useMediaQuery } from "react-responsive";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { showElement } from "../GlobalStyle";
 import Key from "./Key";
-import { IoIosMenu } from "react-icons/io";
+import MobileNavigation from "./MobileNavigation";
 
 const keyDown = keyframes`
     0% {
@@ -25,56 +24,6 @@ const keyAppear = keyframes`
   }
 `;
 
-const BtnIcon = styled.div`
-  display: flex;
-  width: 100%;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-`;
-const MobileNavBtn = styled.div`
-  display: none;
-  @media ${({ theme }) => theme.device.mobile} {
-    display: block;
-  }
-  z-index: 300;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 50px;
-  height: 50px;
-  border-radius: 100px;
-  border: 1px solid white;
-  ${(props) =>
-    props.isClicked &&
-    css`
-      background-color: white;
-      color: black;
-    `}
-`;
-const LinkTitle = styled.div``;
-const MobileNavLink = styled(Link)`
-  text-decoration: none;
-  color: white;
-`;
-const NavOptContainer = styled.div`
-  margin-bottom: 15px;
-`;
-const MobileNavContainer = styled.div`
-  /* background-color: beige; */
-  position: fixed;
-  display: none;
-  z-index: 300;
-  right: 20px;
-  bottom: 80px;
-  text-align: right;
-  ${(props) =>
-    props.isVisible &&
-    css`
-      display: block;
-    `}/* background-color: rgba(0, 0, 0, 0.61);
-  backdrop-filter: blur(5px); */
-`;
 const NavTitle = styled.div`
   font-family: "Raleway", sans-serif;
   color: #7c7c7c;
@@ -121,8 +70,8 @@ const NavContainer = styled.div`
   justify-content: center;
   background: transparent;
   ${(props) =>
-    props.crntPath !== "/" &&
-    props.crntPath !== "/contact" &&
+    props.location.pathname !== "/" &&
+    props.location.pathname !== "/contact" &&
     css`
       @media ${({ theme }) => theme.device.laptop} {
         &:hover {
@@ -142,7 +91,7 @@ const NavContainer = styled.div`
 `;
 function Navigation({ isScrollEnd, setIsScrollEnd }) {
   const [title, setTitle] = useState("");
-  const [isMobileNavVisible, setIsMobileNavVisible] = useState(false);
+  let location = useLocation();
   const navList = [
     "home",
     "bio",
@@ -152,14 +101,11 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
     "class",
     "contact",
   ];
-  const crntPath = window.location.pathname;
   useEffect(() => {
     // hide nav when route changes
     setIsScrollEnd(false);
-  }, [crntPath]);
-  const onMobileNavClick = (event) => {
-    setIsMobileNavVisible(!isMobileNavVisible);
-  };
+  }, [location]);
+
   const showTitle = (event) => {
     setTitle(event.currentTarget.id);
   };
@@ -168,7 +114,7 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
   };
   return (
     <>
-      <NavContainer isScrollEnd={isScrollEnd} crntPath={crntPath}>
+      <NavContainer isScrollEnd={isScrollEnd} location={location}>
         <NavTitle>{title.toUpperCase()}</NavTitle>
         <NavKeyContainer>
           {navList.map((nav, index) => {
@@ -188,22 +134,7 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
         </NavKeyContainer>
       </NavContainer>
 
-      <MobileNavContainer isVisible={isMobileNavVisible}>
-        {navList.map((nav, index) => {
-          return (
-            <NavOptContainer id={nav}>
-              <MobileNavLink to={nav === "home" ? "/" : "/" + nav}>
-                {nav.toUpperCase()}
-              </MobileNavLink>
-            </NavOptContainer>
-          );
-        })}
-      </MobileNavContainer>
-      <MobileNavBtn onClick={onMobileNavClick} isClicked={isMobileNavVisible}>
-        <BtnIcon>
-          <IoIosMenu size={35} />
-        </BtnIcon>
-      </MobileNavBtn>
+      <MobileNavigation navList={navList} />
     </>
   );
 }
