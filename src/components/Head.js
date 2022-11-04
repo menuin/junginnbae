@@ -71,7 +71,7 @@ function Head() {
     <HeadContainer>
       <ImageContainer location={location}>
         <Img src="images/home_pianist.jpg" location={location} />
-        <HeadTitle location={location}>JUNGIN PAE</HeadTitle>
+        <HeadTitle location={location}>JUNGIN BAE</HeadTitle>
       </ImageContainer>
     </HeadContainer>
   );
