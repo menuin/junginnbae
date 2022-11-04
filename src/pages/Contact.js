@@ -41,7 +41,6 @@ const English = styled.div`
 const Korean = styled.div`
   font-family: "Nanum Myeongjo", serif;
   font-size: 28px;
-  /* margin-right: 10px; */
   margin-bottom: 5px;
 `;
 const Title = styled.div`
@@ -52,7 +51,6 @@ const Title = styled.div`
   border-bottom: 1px solid #a9a9a9;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  /* background-color: beige; */
 `;
 const CardContent = styled.div`
   display: flex;
@@ -80,11 +78,11 @@ const Card = styled.button`
       box-shadow: 10px 10px 10px #4b4b4b;
     }
   }
-  @media ${({ theme }) => theme.device.mobileAndTablet} {
+  /* @media ${({ theme }) => theme.device.mobileAndTablet} {
     animation: ${seeCard} 0.5s forwards;
     animation-delay: 0.2s;
     box-shadow: 10px 10px 10px #4b4b4b;
-  }
+  } */
 `;
 const ContactContent = styled.div`
   display: flex;

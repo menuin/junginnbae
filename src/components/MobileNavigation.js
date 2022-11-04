@@ -42,8 +42,18 @@ const MobileNavScreen = styled.div`
   width: 100%;
   height: 100%;
   background-color: black;
-  opacity: 0;
+  opacity: 0%;
   z-index: 299;
+  display: none;
+  @media ${({ theme }) => theme.device.mobile} {
+    display: block;
+  }
+  ${(props) =>
+    props.isVisible == null ||
+    (props.isVisible == false &&
+      css`
+        z-index: -1;
+      `)}
   ${(props) =>
     props.isVisible != null &&
     (props.isVisible
