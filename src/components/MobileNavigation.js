@@ -49,11 +49,11 @@ const MobileNavScreen = styled.div`
     display: block;
   }
   ${(props) =>
-    props.isVisible == null ||
-    (props.isVisible == false &&
-      css`
-        z-index: -1;
-      `)}
+    props.isVisible == null || props.isVisible == false
+      ? css`
+          z-index: -1;
+        `
+      : css``}
   ${(props) =>
     props.isVisible != null &&
     (props.isVisible
@@ -101,7 +101,6 @@ const NavOptContainer = styled.div`
 `;
 
 const MobileNavContainer = styled.div`
-  /* background-color: beige; */
   position: fixed;
   display: none;
   z-index: 300;
