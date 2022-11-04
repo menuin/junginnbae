@@ -5,6 +5,7 @@ import PrevProgram from "../components/PrevProgram";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import programData from "../db/programData.json";
 
 const NoEventAlert = styled.div`
   text-align: center;
@@ -55,14 +56,15 @@ function Repertoire() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
   useEffect(() => {
-    async function fetchData() {
-      const { data: response } = await axios.get(
-        "http://localhost:1124/programs"
-      );
+    // async function fetchData() {
+    //   const { data: response } = await axios.get(
+    //     "http://localhost:1124/programs"
+    //   );
 
-      setPrograms(response);
-    }
-    fetchData();
+    //   setPrograms(response);
+    // }
+    // fetchData();
+    setPrograms(programData.programs);
   }, []);
   useEffect(() => {
     setUpcomingEvents(
