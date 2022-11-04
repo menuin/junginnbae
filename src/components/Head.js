@@ -15,9 +15,6 @@ const changeImgOpacity = keyframes`
   0% {
     opacity:0.5 ;
   }
-  /* 60% {
-    opacity:0.5;
-  } */
   100%{
     opacity:0 ;
   }
@@ -33,6 +30,9 @@ const ImageContainer = styled.div`
   align-items: center;
   overflow: hidden;
   height: 350px;
+  /* @media ${({ theme }) => theme.device.mobile} {
+    height: 200px;
+  } */
 
   ${(props) =>
     props.location.pathname !== "/" &&
@@ -53,7 +53,6 @@ const Img = styled.img`
 const HeadTitle = styled.div`
   position: absolute;
   color: white;
-  /* font-family: "Montserrat", sans-serif; */
   font-family: "Poiret One", cursive;
   font-size: 25px;
   letter-spacing: 0.5em;

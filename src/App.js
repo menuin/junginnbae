@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
-import "./App.css";
 import Head from "./components/Head";
 import Navigation from "./components/Navigation";
 import Bio from "./pages/Bio";

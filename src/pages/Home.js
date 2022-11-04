@@ -24,7 +24,9 @@ const TitleContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 200px;
-  margin-bottom: 10px;
+  @media ${({ theme }) => theme.device.mobile} {
+    display: none;
+  }
 `;
 
 const LetterContainer = styled.div`
@@ -46,6 +48,29 @@ const SubTitleContainer = styled.div`
   opacity: 0;
   animation: ${showElement} 1s forwards;
   animation-delay: 1.8s;
+  @media ${({ theme }) => theme.device.mobile} {
+    animation: none;
+    opacity: 1;
+  }
+`;
+const MobileTitle = styled.div`
+  display: none;
+  width: 100%;
+  justify-content: center;
+  @media ${({ theme }) => theme.device.mobile} {
+    display: flex;
+  }
+`;
+const MobileTitleContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  font-family: "Montserrat", sans-serif;
+  font-size: 50px;
+  margin-top: 200px;
+  margin-bottom: 10px;
+  @media ${({ theme }) => theme.device.mobile} {
+    display: flex;
+  }
 `;
 const HomeBtnContainer = styled.div`
   display: flex;
@@ -79,6 +104,10 @@ function Home() {
           return <LetterContainer id={index}>{letter}</LetterContainer>;
         })}
       </TitleContainer>
+      <MobileTitleContainer>
+        <MobileTitle>J U N G I N</MobileTitle>
+        <MobileTitle>P A E</MobileTitle>
+      </MobileTitleContainer>
       <SubTitleContainer>pianist</SubTitleContainer>
       {/* <HomeBtnContainer>
         <LanSelectBtn>KOREAN</LanSelectBtn>

@@ -134,6 +134,7 @@ function Navigation({ isScrollEnd, setIsScrollEnd }) {
         </NavKeyContainer>
       </NavContainer>
 
+      {/* Mobile Navigation */}
       <MobileNavigation navList={navList} />
     </>
   );
