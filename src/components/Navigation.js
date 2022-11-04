@@ -92,15 +92,7 @@ const NavContainer = styled.div`
 function Navigation({ isScrollEnd, setIsScrollEnd }) {
   const [title, setTitle] = useState("");
   let location = useLocation();
-  const navList = [
-    "home",
-    "bio",
-    // "discography",
-    // "videos",
-    "repertoire",
-    "class",
-    "contact",
-  ];
+  const navList = ["home", "bio", "repertoire", "class", "contact"];
   useEffect(() => {
     // hide nav when route changes
     setIsScrollEnd(false);
